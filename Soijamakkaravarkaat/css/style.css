@@ -1,0 +1,430 @@
+:root {
+    --bg: radial-gradient(circle, #15132b, #000102);
+    --bg-solid: #0F1A22;
+    --surface: #181832;
+    --ink: #E8ECEE;
+    --muted: #9DAEB9;
+    --line: #35495A;
+    --accent: #aac0f5;
+    --on-accent: #14202B;
+    --head: "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 1.0625rem/1.6 var(--body);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--head);
+    line-height: 1.05;
+    margin: 0 0 .6rem;
+    text-shadow: 1px 1px 8px rgba(228, 214, 214, 0.5);
+}
+
+h1 {
+    font-weight: 800;
+    font-size: clamp(2.6rem, 10vw, 6.5rem);
+    letter-spacing: -.03em;
+}
+
+h2 {
+    font-weight: 800;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: -.02em;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* yläosa ja valikko */
+
+#ylätunniste {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .75rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--line);
+    width: 100%;
+}
+
+.sivuston-nimi {
+    font: 800 1.25rem var(--head);
+    text-decoration: none;
+    letter-spacing: -.01em;
+}
+
+nav ul {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--ink);
+}
+
+nav a[aria-current="page"] {
+    color: var(--ink);
+    border-bottom: 2px solid var(--accent);
+}
+
+/* sisältö */
+
+#pääsisältö {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 4rem;
+    flex: 1;
+    width: 100%;
+}
+
+#slogan {
+    font-size: 1.3rem;
+    color: var(--muted);
+    max-width: 40ch;
+    margin: .5rem 0 2rem;
+}
+
+.sivun-johdanto {
+    color: var(--muted);
+    max-width: 60ch;
+    margin: 0 0 2.5rem;
+}
+
+.sulje:hover {
+    background: var(--ink);
+    color: var(--bg-solid);
+}
+
+/* etusivun taustakuva */
+
+body.etusivu {
+    position: relative;
+}
+
+.tausta {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+}
+
+.tausta::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../Kuvat/tausta.png") center / cover no-repeat;
+    opacity: .35;
+    animation: tausta-zoom 8s ease-in-out infinite alternate;
+}
+
+@keyframes tausta-zoom {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.12);
+    }
+}
+
+/* etusivun linkit */
+
+.polut {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    margin-top: 3rem;
+}
+
+.polku {
+    display: block;
+    text-decoration: none;
+    border: 1.5px solid var(--ink);
+    border-radius: 4px;
+    padding: 1.5rem;
+    transition: transform .3s ease, background .3s ease, border-color .3s ease, color .3s ease;
+}
+
+.polku:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+}
+
+.polku h2 {
+    margin-bottom: .3rem;
+}
+
+.polku p {
+    margin: 0;
+}
+
+/* elokuvat */
+
+.elokuvat {
+    display: grid;
+    gap: 2.5rem 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    align-items: start;
+}
+
+.elokuva h2 {
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+
+.elokuva p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.soitin {
+    margin-top: 2.5rem;
+}
+
+.elokuva.valittu .juliste {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.juliste {
+    position: relative;
+    display: block;
+    aspect-ratio: 2 / 3;
+    background: var(--surface);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.juliste img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .3s ease;
+}
+
+.juliste::after {
+    content: "Watch film";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    color: var(--ink);
+    font: 600 1.15rem var(--head);
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.juliste:focus-visible img {
+    transform: scale(1.05);
+}
+
+.juliste:focus-visible::after {
+    opacity: 1;
+}
+
+@media (hover: hover) {
+    .juliste:hover img {
+        transform: scale(1.05);
+    }
+
+    .juliste:hover::after {
+        opacity: 1;
+    }
+}
+
+.toisto {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4.5rem;
+    height: 4.5rem;
+    margin: -2.25rem 0 0 -2.25rem;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--on-accent);
+    font-size: 2rem;
+    pointer-events: none;
+}
+
+#alatunniste {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    background: var(--surface);
+    padding: 2rem 1.25rem;
+    text-align: center;
+    width: 100%;
+    
+}
+
+.soitin .kehys {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.soitin iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.sulje {
+    margin-top: .6rem;
+    background: none;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    font: 600 .95rem var(--body);
+    padding: .4rem .9rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* tiimi */
+
+.tiimi {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 2.5rem 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.jasen img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    background: var(--surface);
+    border-radius: 3px;
+    display: block;
+    margin-bottom: .8rem;
+}
+
+.rooli {
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 .4rem;
+}
+
+.jasen p {
+    margin: 0 0 .4rem;
+}
+
+/* alatunnisteen sisältö */
+
+#maili {
+    font-weight: 600;
+}
+
+.sosiaalinen {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.tekijanoikeus {
+    color: var(--muted);
+    font-size: .92rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .juliste img,
+    .juliste::after {
+        transition: none;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .juliste img,
+    .juliste::after {
+        transition: none;
+    }
+
+    .tausta::before {
+        animation: none;
+    }
+}
+
+@media (max-width: 700px) {
+    .tausta::before {
+        background-position: 20% center;
+        transform-origin: 20% center;
+    }
+}

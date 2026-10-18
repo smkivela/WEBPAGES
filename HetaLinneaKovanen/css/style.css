@@ -1,0 +1,962 @@
+/* 1. Värit, fontit ja teeman perusmuuttujat. */
+
+:root {
+    --bg: radial-gradient(circle, #14122E, #eddded);
+    --ink: #F1EFFF;
+    --mute: #A9A6CF;
+    --blue: #2F4BFF;
+    --pink: #FF6B8B;
+    --sun: #FFD23F;
+    --mint: #6FD6B0;
+    --card: #1E1B45;
+    --line: #34306a;
+    --blend: screen;
+    --op: .7;
+
+    color-scheme: dark;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media(prefers-color-scheme:dark) {
+    :root:not([data-theme="light"]) {
+        --bg: radial-gradient(circle, #14122E, #edecf6);
+        --ink:#F1EFFF;
+        --mute:#A9A6CF;
+        --card:#1E1B45;
+        --line:#34306a;
+        --blend:screen;
+        --op:.7
+    }
+}
+:root[data-theme="light"] {
+    --bg: #F6F5FB;
+    --ink: #1E1B4B;
+    --mute: #5B5880;
+    --card: #fff;
+    --line: #d9d6ee;
+    --blend: multiply;
+    --op: .85;
+
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    --bg: radial-gradient(circle, #14122E, #1c091c);
+    --ink: #F1EFFF;
+    --mute: #A9A6CF;
+    --card: #1E1B45;
+    --line: #34306a;
+    --blend: screen;
+    --op: .7;
+
+    color-scheme: dark;
+}
+*,*::before,*::after {
+    box-sizing:inherit
+}
+html {
+    scroll-padding-top:env(safe-area-inset-top,0px);
+    scroll-behavior:smooth
+}
+
+/* 2. Sivun yleiset typografia- ja asettelusäännöt. */
+
+body {
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font:400 1.0625rem/1.6 "Inter",system-ui,sans-serif
+}
+h1,h2,h3 {
+    font-family:"Fraunces",Georgia,serif;
+    line-height:1.05;
+    margin:0;
+    letter-spacing:-.02em
+}
+a {
+    color:inherit
+}
+:focus-visible {
+    outline:3px solid var(--blue);
+    outline-offset:3px;
+    border-radius:4px
+}
+.wrap {
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 1.25rem
+}
+header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.25rem 0;
+    gap:1rem;
+    flex-wrap:wrap
+}
+.logo {
+    font:800 1.25rem "Fraunces",Georgia,serif;
+    text-decoration:none
+}
+nav {
+    display:flex;
+    gap:1.25rem;
+    flex-wrap:wrap
+}
+nav a {
+    text-decoration:none;
+    color:var(--mute);
+    font-weight:600
+}
+nav a:hover {
+    color:var(--ink)
+}
+
+/* 3. Yläosa ja SVG-kuvio. */
+
+.hero {
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:2rem;
+    align-items:center;
+    padding:2rem 0 4rem
+}
+.hero h1 {
+    font-size:clamp(2.6rem,6.5vw,5.2rem);
+    font-weight:800
+}
+.hero p.lead {
+    font-size:1.25rem;
+    max-width:34ch;
+    color:var(--mute);
+    margin:1.25rem 0 1.75rem
+}
+.btns {
+    display:flex;
+    gap:.75rem;
+    flex-wrap:wrap
+}
+.btn {
+    display:inline-block;
+    padding:.8rem 1.4rem;
+    border-radius:999px;
+    background:var(--ink);
+    color:var(--bg);
+    font-weight:600;
+    text-decoration:none;
+    border:2px solid var(--ink)
+}
+.btn.alt {
+    background:transparent;
+    color:var(--ink)
+}
+.stage {
+    position:relative
+}
+svg.venn {
+    width:100%;
+    height:auto;
+    display:block;
+    cursor:pointer;
+    overflow:visible
+}
+.venn circle {
+    mix-blend-mode:var(--blend);
+    fill-opacity:var(--op);
+    stroke:none;
+    transition:fill-opacity .5s,stroke-width .5s
+}
+.venn .face,.venn .lbl {
+    transition:opacity .4s
+}
+.venn .lbl {
+    opacity:0;
+    font:600 15px "Inter",sans-serif;
+    fill:var(--ink);
+    text-anchor:middle
+}
+.venn .core {
+    opacity:0;
+    font:800 20px "Fraunces",Georgia,serif;
+    fill:var(--ink);
+    text-anchor:middle;
+    transition:opacity .4s
+}
+.venn.strat circle {
+    fill-opacity:.28;
+    stroke:var(--ink);
+    stroke-width:2;
+    stroke-dasharray:6 5
+}
+.venn.strat .face {
+    opacity:0
+}
+.venn.strat .lbl,.venn.strat .core {
+    opacity:1
+}
+@media(prefers-reduced-motion:no-preference) {
+    .venn:not(.strat) .c1 {
+        animation:wob 5s ease-in-out infinite
+    }
+    .venn:not(.strat) .c2 {
+        animation:wob 6s ease-in-out -2s infinite
+    }
+    .venn:not(.strat) .c3 {
+        animation:wob 7s ease-in-out -4s infinite
+    }
+}
+@keyframes wob {
+    50% {
+        transform:translate(6px,-8px)
+    }
+}
+
+/* 4. Kielivalitsin. */
+
+.toggle {
+    display:flex;
+    gap:.25rem;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:.25rem;
+    width:max-content;
+    margin:1rem auto 0
+}
+.toggle button {
+    font:600 .95rem "Inter",sans-serif;
+    border:0;
+    background:transparent;
+    color:var(--mute);
+    padding:.5rem 1rem;
+    border-radius:999px;
+    cursor:pointer
+}
+.toggle button[aria-pressed="true"] {
+    background:var(--ink);
+    color:var(--bg)
+}
+section {
+    padding:4rem 0;
+    border-top:1px solid var(--line)
+}
+section h2 {
+    font-size:clamp(2rem,4.5vw,3.2rem);
+    margin-bottom:1.5rem;
+    font-weight:800;
+    max-width:18ch
+}
+.two {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2.5rem
+}
+.two p {
+    margin:0 0 1rem;
+    max-width:60ch
+}
+.tags {
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin-top:1rem
+}
+.tags span {
+    padding:.35rem .9rem;
+    border-radius:999px;
+    font-weight:600;
+    font-size:.95rem;
+    color:#1E1B4B
+}
+
+/* 5. Projektikortit ja avautuva projektiesittely. */
+
+.cases {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.5rem
+}
+.case {
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column
+}
+.case:nth-child(2) {
+    border-radius:40px 8px 40px 8px
+}
+.case:nth-child(3) {
+    border-radius:8px 28px 8px 28px
+}
+.shot {
+    height:210px;
+    padding:1.25rem;
+    display:flex;
+    gap:.6rem;
+    align-items:flex-end;
+    justify-content:center
+}
+.ui {
+    background:var(--card);
+    border-radius:16px;
+    padding:.7rem;
+    width:46%;
+    display:flex;
+    flex-direction:column;
+    gap:.45rem;
+    box-shadow:0 8px 0 rgba(30,27,75,.18);
+    color:var(--ink)
+}
+.ui i {
+    display:block;
+    height:9px;
+    border-radius:5px;
+    background:var(--line)
+}
+.ui i.b {
+    background:var(--blue);
+    height:22px;
+    border-radius:11px
+}
+.ui i.h {
+    height:48px;
+    border-radius:10px;
+    background:var(--sun)
+}
+.ui i.w {
+    width:60%
+}
+.ui:nth-child(2) {
+    transform:translateY(-18px) rotate(3deg)
+}
+.case .txt {
+    padding:1.25rem 1.4rem 1.6rem
+}
+.case h3 {
+    font-size:1.5rem;
+    margin-bottom:.5rem
+}
+.case p {
+    margin:0 0 .75rem;
+    color:var(--mute);
+    font-size:1rem
+}
+.case b {
+    font-weight:600;
+    color:var(--ink)
+}
+.note {
+    color:var(--mute);
+    font-size:.9rem;
+    margin-top:1.25rem
+}
+.case {
+    position:relative;
+    cursor:pointer;
+    transition:transform .25s
+}
+.case:hover {
+    transform:rotate(-1.2deg) translateY(-4px)
+}
+.case:nth-child(2):hover {
+    transform:rotate(1.2deg) translateY(-4px)
+}
+.case::after {
+    content:"+";
+    position:absolute;
+    top:.8rem;
+    right:.8rem;
+    width:2.2rem;
+    height:2.2rem;
+    border-radius:50%;
+    background:#1E1B4B;
+    color:#fff;
+    font:800 1.4rem/2.2rem "Fraunces",Georgia,serif;
+    text-align:center
+}
+.case[aria-expanded="true"] {
+    outline:3px solid var(--ink);
+    outline-offset:3px
+}
+.case[aria-expanded="true"]::after {
+    content:"–"
+}
+.case:hover .ui:nth-child(1) {
+    transform:rotate(-5deg)
+}
+.case:hover .ui:nth-child(2) {
+    transform:translateY(-26px) rotate(7deg)
+}
+.ui {
+    transition:transform .3s
+}
+.open {
+    margin-top:1.5rem
+}
+.ph {
+    position:relative;
+    color:#1E1B4B;
+    border-radius:36px 8px 36px 8px;
+    padding:2rem;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    align-items:center;
+    animation:pop .45s cubic-bezier(.2,1.3,.4,1)
+}
+@keyframes pop {
+    from {
+        opacity:0;
+        transform:scale(.94) translateY(20px)
+    }
+}
+.ph h3 {
+    font-size:clamp(2rem,4vw,3rem);
+    margin-bottom:.4rem
+}
+.ph .meta {
+    margin:0 0 1.25rem;
+    font-weight:600
+}
+.stk {
+    display:grid;
+    gap:.75rem
+}
+.stk div {
+    background:#fff;
+    border-radius:14px;
+    padding:.8rem 1rem;
+    box-shadow:4px 5px 0 rgba(30,27,75,.25);
+    font-size:1rem;
+    line-height:1.45
+}
+.stk div:nth-child(1) {
+    transform:rotate(-1.2deg)
+}
+.stk div:nth-child(2) {
+    transform:rotate(1deg) translateX(14px)
+}
+.stk div:nth-child(3) {
+    transform:rotate(-.6deg)
+}
+.stk b {
+    display:block;
+    font:800 1.1rem "Fraunces",Georgia,serif
+}
+.fan {
+    position:relative;
+    height:300px
+}
+.pui {
+    position:absolute;
+    left:50%;
+    bottom:0;
+    width:38%;
+    margin-left:-19%;
+    background:#fff;
+    border-radius:16px;
+    padding:.7rem;
+    display:flex;
+    flex-direction:column;
+    gap:.45rem;
+    box-shadow:0 8px 0 rgba(30,27,75,.22);
+    transition:transform .7s cubic-bezier(.2,1.3,.4,1)
+}
+.pui i {
+    display:block;
+    height:10px;
+    border-radius:5px;
+    background:#d9d6ee
+}
+.pui i.b {
+    background:#2F4BFF;
+    height:26px;
+    border-radius:13px
+}
+.pui i.h {
+    height:70px;
+    border-radius:10px;
+    background:#FFD23F
+}
+.pui i.w {
+    width:60%
+}
+.fan.go .pui:nth-child(1) {
+    transform:translateX(-95%) rotate(-12deg)
+}
+.fan.go .pui:nth-child(2) {
+    transform:translateY(-22px)
+}
+.fan.go .pui:nth-child(3) {
+    transform:translateX(95%) rotate(12deg)
+}
+.hand {
+    grid-column:1/-1;
+    margin:0;
+    font:600 1.7rem/1.25 Caveat,"Bradley Hand",cursive;
+    transform:rotate(-1.2deg);
+    max-width:44ch
+}
+.hand span {
+    text-decoration:underline wavy;
+    text-underline-offset:5px
+}
+.ph .acts {
+    grid-column:1/-1;
+    display:flex;
+    gap:.75rem
+}
+.ph .acts button {
+    font:600 1rem "Inter",sans-serif;
+    border:2px solid #1E1B4B;
+    background:transparent;
+    color:#1E1B4B;
+    border-radius:999px;
+    padding:.5rem 1.2rem;
+    cursor:pointer
+}
+.ph .acts button:first-child {
+    background:#1E1B4B;
+    color:#fff
+}
+@media(max-width:820px) {
+    .ph {
+        grid-template-columns:1fr;
+        padding:1.25rem
+    }
+    .fan {
+        height:240px
+    }
+}
+@media(prefers-reduced-motion:reduce) {
+    .ph {
+        animation:none
+    }
+    .pui,.case,.ui {
+        transition:none
+    }
+}
+
+/* 6. Muut sisältöosiot, lainaukset ja alatunniste. */
+
+.cols {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2rem
+}
+.cols h3 {
+    font-size:1.4rem;
+    margin-bottom:.5rem
+}
+.cols p {
+    margin:0;
+    color:var(--mute)
+}
+.contact {
+    text-align:center
+}
+.contact h2 {
+    margin:0 auto 1.25rem;
+    max-width:16ch
+}
+.contact .btns {
+    justify-content:center
+}
+footer {
+    padding:2rem 0 3rem;
+    color:var(--mute);
+    font-size:.9rem;
+    text-align:center
+}
+@media(max-width:820px) {
+    .hero,.two,.cases,.cols {
+        grid-template-columns:1fr
+    }
+    .hero {
+        padding-top:1rem
+    }
+    .stage {
+        max-width:420px;
+        margin:0 auto;
+        width:100%
+    }
+}
+.hero h1 {
+    font-size:clamp(2.2rem,5vw,4rem)
+}
+.cases {
+    grid-template-columns:repeat(2,1fr)
+}
+.quotes {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.5rem
+}
+blockquote {
+    margin:0;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:24px 24px 24px 4px;
+    padding:1.4rem
+}
+blockquote:nth-child(2) {
+    transform:rotate(1deg)
+}
+blockquote:nth-child(3) {
+    transform:rotate(-1deg)
+}
+blockquote p {
+    margin:0 0 1rem;
+    font-size:1rem
+}
+cite {
+    font:600 .95rem "Inter",sans-serif;
+    color:var(--mute);
+    font-style:normal
+}
+.ph .btn {
+    margin-top:1rem;
+    background:#1E1B4B;
+    color:#fff;
+    border-color:#1E1B4B
+}
+.stk .nt {
+    font-size:.9rem;
+    background:transparent;
+    box-shadow:none;
+    padding:.2rem 1rem
+}
+@media(max-width:820px) {
+    .cases,.quotes {
+        grid-template-columns:1fr
+    }
+    blockquote {
+        transform:none!important
+    }
+}
+/* 7. Viimeistellyn ulkoasun tarkennukset. Nämä säännöt tulevat aiempien jälkeen tarkoituksella, jotta ne yliajavat alkuperäiset arvot. */
+section {
+    padding:5rem 0
+}
+.hero h1,section h2,.case h3,.ph h3,.cols h3 {
+    font-weight:500;
+    letter-spacing:-.015em
+}
+.btn,.toggle,.toggle button,.ph .acts button {
+    border-radius:8px
+}
+.tags span {
+    border-radius:6px;
+    font-weight:600
+}
+.case,.case:nth-child(2),.case:nth-child(3) {
+    border-radius:12px
+}
+.case:hover,.case:nth-child(2):hover {
+    transform:translateY(-3px)
+}
+.case::after {
+    width:2rem;
+    height:2rem;
+    line-height:2rem;
+    font-size:1.2rem;
+    border-radius:8px
+}
+.ui,.pui {
+    border-radius:10px;
+    box-shadow:0 1px 0 rgba(30,27,75,.18)
+}
+.ui:nth-child(2) {
+    transform:translateY(-16px)
+}
+.case:hover .ui:nth-child(1) {
+    transform:none
+}
+.case:hover .ui:nth-child(2) {
+    transform:translateY(-24px)
+}
+.ph {
+    border-radius:12px;
+    padding:2.25rem
+}
+.stk div,.stk div:nth-child(n) {
+    border-radius:8px;
+    box-shadow:none;
+    transform:none
+}
+.fan.go .pui:nth-child(1) {
+    transform:translateX(-95%) rotate(-5deg)
+}
+.fan.go .pui:nth-child(3) {
+    transform:translateX(95%) rotate(5deg)
+}
+.hand {
+    font:500 1.3rem/1.4 "Fraunces","Inter",sans-serif;
+    transform:none;
+    letter-spacing:-.01em
+}
+.hand span {
+    text-decoration:none;
+    border-bottom:3px solid #1E1B4B
+}
+blockquote,blockquote:nth-child(2),blockquote:nth-child(3) {
+    border-radius:12px;
+    transform:none
+}
+@keyframes wob {
+    50% {
+        transform:translate(3px,-4px)
+    }
+}
+.ctl {
+    display:flex;
+    gap:.5rem;
+    align-items:center
+}
+.ctl .toggle {
+    margin:0
+}
+.toggle button {
+    padding:.4rem .8rem
+}
+.th {
+    width:2.4rem;
+    height:2.4rem;
+    border-radius:8px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:var(--ink);
+    font-size:1.15rem;
+    cursor:pointer
+}
+.venn .face circle {
+    mix-blend-mode:normal;
+    fill-opacity:1;
+    stroke:none
+}
+.slot {
+    align-self:stretch;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+    border:2px dashed rgba(30,27,75,.45);
+    border-radius:8px;
+    background:rgba(255,255,255,.6);
+    color:#1E1B4B;
+    font:600 .9rem Inter,sans-serif;
+    transition:background .3s
+}
+.case:hover .slot {
+    background:rgba(255,255,255,.85)
+}
+.pui.img {
+    aspect-ratio:3/4;
+    padding:0;
+    gap:.4rem;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.75);
+    border:2px dashed rgba(30,27,75,.45);
+    color:#1E1B4B;
+    font:600 .85rem Inter,sans-serif;
+    box-shadow:none
+}
+.venn circle.c1,.venn circle.c2,.venn circle.c3 {
+    cursor:grab;
+    touch-action:none
+}
+.venn.drag circle {
+    cursor:grabbing
+}
+.venn .face,.venn text {
+    pointer-events:none
+}
+.toast {
+    min-height:1.8em;
+    margin:.75rem 0 0;
+    text-align:center;
+    font:500 1.2rem Fraunces,Georgia,serif;
+    opacity:0;
+    transition:opacity .4s
+}
+.toast.on {
+    opacity:1
+}
+.rs {
+    display:block;
+    margin:0 auto;
+    border:0;
+    background:none;
+    color:var(--mute);
+    font:600 .9rem Inter,sans-serif;
+    text-decoration:underline;
+    cursor:pointer
+}
+.rs[hidden] {
+    display:none
+}
+.venn .lbl {
+    opacity:1
+}
+.venn .pill {
+    pointer-events:none
+}
+.venn .pill rect {
+    fill:var(--card);
+    stroke:var(--line);
+    stroke-width:1.5
+}
+.fa-intro {
+    max-width:56ch;
+    color:var(--mute);
+    margin:-.5rem 0 2.5rem
+}
+/* 8. Kuvataidegalleria ja suodatinpainikkeet. */
+.chips {
+    display:flex;
+    gap:.5rem;
+    flex-wrap:wrap;
+    margin:0 0 1.75rem
+}
+.chips button {
+    font:600 .95rem Inter,sans-serif;
+    border:1.5px solid var(--ink);
+    background:transparent;
+    color:var(--ink);
+    border-radius:8px;
+    padding:.4rem .9rem;
+    cursor:pointer
+}
+.chips button[aria-pressed="true"] {
+    background:var(--ink);
+    color:var(--bg)
+}
+.gal {
+    column-count:3;
+    column-gap:1.25rem
+}
+.art {
+    margin:0 0 1.25rem;
+    break-inside:avoid
+}
+.fs {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:.4rem;
+    width:100%;
+    border:2px dashed var(--mute);
+    border-radius:8px;
+    background:color-mix(in srgb,var(--c,#2F4BFF) 22%,var(--card));
+    color:var(--mute);
+    font:600 .9rem Inter,sans-serif
+}
+.a1 {
+    aspect-ratio:3/4
+}
+.a2 {
+    aspect-ratio:1
+}
+.a3 {
+    aspect-ratio:4/3
+}
+.a4 {
+    aspect-ratio:4/5
+}
+.a5 {
+    aspect-ratio:16/10;
+    --c:#FF6B8B
+}
+.art:nth-child(4n+1) .fs {
+    --c:#2F4BFF
+}
+.art:nth-child(4n+2) .fs {
+    --c:#FF6B8B
+}
+.art:nth-child(4n+3) .fs {
+    --c:#FFD23F
+}
+.art:nth-child(4n) .fs {
+    --c:#6FD6B0
+}
+.art figcaption {
+    padding-top:.5rem;
+    font-size:.95rem;
+    color:var(--mute)
+}
+.art figcaption b {
+    display:block;
+    color:var(--ink);
+    font-weight:600
+}
+.series {
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:2rem;
+    align-items:center;
+    margin:0 0 3rem
+}
+.series h3 {
+    font-size:1.8rem;
+    margin-bottom:.6rem
+}
+.series p {
+    margin:0;
+    color:var(--mute);
+    max-width:46ch
+}
+.stmt {
+    margin:3rem 0 0;
+    max-width:30ch;
+    font:500 clamp(1.6rem,3.2vw,2.4rem)/1.2 Fraunces,Georgia,serif;
+    letter-spacing:-.01em
+}
+@media(max-width:820px) {
+    .gal {
+        column-count:2
+    }
+    .series {
+        grid-template-columns:1fr
+    }
+}
+@media(max-width:520px) {
+    .gal {
+        column-count:1
+    }
+}
+
+/* 9. Pienet korjaukset saavutettavuuteen ja pienille näytöille. */
+[hidden] {
+    display: none !important;
+}
+
+.case:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 4px;
+}
+
+.venn {
+    touch-action: pan-y;
+}
+
+@media (max-width: 520px) {
+    .wrap {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
+    nav {
+        gap: .75rem;
+    }
+
+    .ph .acts {
+        flex-wrap: wrap;
+    }
+}

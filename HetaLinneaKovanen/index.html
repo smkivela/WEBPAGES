@@ -1,13 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Heta-Linnea Kovanen – Product designer & design mentor</title>
+<!-- FONTS: Fraunces otsikoihin ja Inter leipätekstiin. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <h2>jdsajklsajlkdsajkl</h2>
+<div class="wrap">
+
+<header>
+  <a class="logo" href="#top">Heta-Linnea Kovanen</a>
+
+  <nav aria-label="Main menu">
+    <a href="#projects">Projects</a>
+    <a href="#mentoring">Mentoring</a>
+    <a href="#fine-arts">Fine Arts</a>
+    <a href="https://www.hetalinnea.com/pagecv-1">CV</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="ctl">
+    <div class="toggle" role="group" aria-label="Language">
+        <button type="button" data-l="en" aria-pressed="true">EN</button>
+        <button type="button" data-l="fi" aria-pressed="false">FI</button>
+    </div>
+        <button type="button" class="th" id="th" aria-label="Switch theme" title="Light / dark">◐</button>
+    </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero-osa ja interaktiivinen ympyräkuvio. -->
+
+<div class="hero">
+  <div>
+    <h1>Need to turn a complex product into something people actually understand?</h1>
+    <p class="lead">For over a decade, I've helped organisations and teams bring clarity to complex ideas through thoughtful design.</p>
+    <div class="btns"><a class="btn" href="#projects">See projects</a><a class="btn alt" href="#mentoring">Design mentoring</a></div>
+  </div>
+  <div class="stage">
+    <svg class="venn" id="venn" viewBox="0 0 400 400" role="img" aria-label="Three overlapping circles: user, business and technology. In the middle is the product.">
+      <circle class="c1" cx="150" cy="150" r="105" fill="#2F4BFF"/>
+      <circle class="c2" cx="250" cy="150" r="105" fill="#FF6B8B"/>
+      <circle class="c3" cx="200" cy="235" r="105" fill="#FFD23F"/>
+      <g class="face">
+        <ellipse cx="180" cy="170" rx="16" ry="19" fill="#fff"/><ellipse cx="220" cy="170" rx="16" ry="19" fill="#fff"/>
+        <circle id="e1" cx="180" cy="172" r="8" fill="#1E1B4B"/><circle id="e2" cx="220" cy="172" r="8" fill="#1E1B4B"/>
+        <path id="mo" d="M178 208 Q200 228 222 208" fill="none" stroke="#1E1B4B" stroke-width="5" stroke-linecap="round"/>
+      </g>
+      <g class="pill"><rect x="63" y="86" width="84" height="28" rx="8"/><text class="lbl" x="105" y="105">User</text></g>
+      <g class="pill"><rect x="237" y="86" width="116" height="28" rx="8"/><text class="lbl" x="295" y="105">Business</text></g>
+      <g class="pill"><rect x="147" y="299" width="106" height="28" rx="8"/><text class="lbl" x="200" y="318">Technology</text></g>
+      
+    </svg>
     
+    <p class="toast" id="toast" role="status"></p>
+    <button type="button" class="rs" id="rs" hidden>Reset</button>
+  </div>
+</div>
+
+<!-- Projektikortit avautuvat JavaScriptillä yksityiskohtaisiksi case-esittelyiksi. -->
+<section id="projects">
+  <h2>Past projects</h2>
+  <div class="cases"><article class="case"><div class="shot" style="background:var(--mint)" aria-hidden="true"><div class="slot"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div></div><div class="txt"><h3>Designing a Two-Sided Healthcare Marketplace</h3><p>Marketplace design · B2B & B2C · Product strategy</p></div></article><article class="case"><div class="shot" style="background:var(--pink)" aria-hidden="true"><div class="slot"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div></div><div class="txt"><h3>Reducing complexity in clinical workflows</h3><p>UX research · Medical device UI · HMI</p></div></article><article class="case"><div class="shot" style="background:var(--sun)" aria-hidden="true"><div class="slot"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div></div><div class="txt"><h3>Building Structure for an Evolving Enterprise Product</h3><p>Enterprise UX · Information architecture · MVP</p></div></article><article class="case"><div class="shot" style="background:#bfc8ff" aria-hidden="true"><div class="slot"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div></div><div class="txt"><h3>Crafting a Mobile-First Commerce Experience</h3><p>Mobile commerce · UX/UI · Accessibility</p></div></article></div>
+  <div class="open" id="open" aria-live="polite"></div>
+  <p class="note">Click a project to open it.</p>
+</section>
+
+<!-- Kuvataideosion suodattimet toimivat data-f- ja data-c-attribuuttien avulla. -->
+<section id="fine-arts">
+  <h2>Fine Arts</h2>
+  <p class="fa-intro">Alongside product design, I work as an illustrator and visual artist. Here are selected series, exhibitions and works.</p>
+  <div class="series"><div class="fs a5"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><div><h3>Series title</h3><p>Write about the series here: the idea, the materials, where it has been shown. This area can hold several paragraphs.</p></div></div>
+  <div class="chips" role="group" aria-label="Filter works"><button type="button" data-f="all" aria-pressed="true">All</button><button type="button" data-f="ill" aria-pressed="false">Illustration</button><button type="button" data-f="exh" aria-pressed="false">Exhibitions</button><button type="button" data-f="ani" aria-pressed="false">Animation</button></div>
+  <div class="gal"><figure class="art" data-c="ill"><div class="fs a1"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="exh"><div class="fs a3"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="ani"><div class="fs a2"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="ill"><div class="fs a4"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="ani"><div class="fs a1"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="exh"><div class="fs a2"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="ill"><div class="fs a3"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="exh"><div class="fs a1"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure><figure class="art" data-c="ani"><div class="fs a4"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-5 4 4 3-3 4 4"/></svg><span>Image placeholder</span></div><figcaption><b>Work title</b>Year · technique</figcaption></figure></div>
+  <p class="stmt">Replace this with one sentence that sums up your artistic practice.</p>
+</section>
+
+<section id="beyond">
+  <h2>Beyond the interface</h2>
+  <div class="cols">
+    <div><h3>Creative practice</h3><p>A decade across illustration, exhibitions and animation: 15+ grants, shown across Finland and screened at festivals in Europe.</p></div>
+    <div><h3>Cross-disciplinary background</h3><p>Design education, a business degree, a full-stack bootcamp and an ongoing Master's in design and innovation management.</p></div>
+    <div><h3>How I work</h3><p>Open communication and psychological safety, because trust shapes both team wellbeing and product quality.</p></div>
+  </div>
+</section>
+
+<section id="mentoring">
+  <h2>I also work as a design mentor</h2>
+  <div class="two">
+    <div>
+      <p>I'm a Design Mentor at Grafia, the Finnish association of visual communicators, where I support designers in the mentoring programme.</p>
+      <p>My business degree helps me talk about design in the language of business: how to justify decisions, how to show results and how to connect your work to an organisation's goals.</p>
+    </div>
+    <div>
+      <p>Typical topics:</p>
+      <div class="tags"><span style="background:var(--mint)">building a portfolio</span><span style="background:var(--sun)">telling case stories</span><span style="background:var(--pink)">strategic thinking</span><span style="background:#bfc8ff">career choices</span><span style="background:var(--mint)">visual identity</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="quotes">
+  <h2>Comments about me</h2>
+  <div class="quotes"><blockquote><p>“Heta is active team member who not only contributed to various UI/UX design projects but also contributed to community work and impacted on positive and empathetic team spirit.”</p><cite>People and Communication Lead</cite></blockquote><blockquote><p>“She brought a high level of creative expertise to her UX/UI designs, consistently delivering work that exceeded our expectations. Her flexibility and cooperative spirit made collaboration effortless, and her friendly demeanor created a positive and productive atmosphere for the entire team”</p><cite>Senior Application Developer</cite></blockquote><blockquote><p>“She possesses a rare combination of visual flair, customer-centric approach, and communication skills, all essential for delivering excellent UI and UX solutions. She is a huge asset to any modern software development team.”</p><cite>Head of Automation</cite></blockquote></div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Let's talk about your product!</h2>
+  <div class="btns"><a class="btn" href="mailto:hello@hetalinnea.com">hello@hetalinnea.com</a><a class="btn alt" href="https://www.linkedin.com/in/heta-linneakovanen/">LinkedIn</a><a class="btn alt" href="https://www.instagram.com/hetalinnea.design">Instagram</a></div>
+</section>
+</main>
+<footer>© 2026 Heta-Linnea Kovanen</footer>
+</div>
+
+<!-- Interaktiot ja kielenvaihto ovat erillisessä JS-tiedostossa. -->
+<script src="js/script.js" defer></script>
+
 </body>
+
 </html>

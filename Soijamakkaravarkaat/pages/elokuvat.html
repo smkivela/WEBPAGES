@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Short films by Soijamakkaravarkaat.">
+    <title>Films - Soijamakkaravarkaat</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <script src="../js/elokuvat.js" defer></script>
+</head>
+<body>
+    <header id="ylätunniste">
+        <a class="sivuston-nimi" href="../index.html">Soijamakkaravarkaat</a>
+        <nav aria-label="Main">
+            <ul>
+                <li><a href="elokuvat.html" aria-current="page">Films</a></li>
+                <li><a href="tiimi.html">Team</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="pääsisältö">
+        <h1>Films</h1>
+        <p class="sivun-johdanto">Choose a poster to watch the film.</p>
+
+        <!-- Vaihda data-video, linkin osoite ja elokuvan nimi (kolmessa kohdassa / kortti) -->
+        <div class="elokuvat">
+            <article class="elokuva" data-video="r02ElmZQa0A" data-title="Lahja">
+                <a class="juliste" href="https://www.youtube.com/watch?v=r02ElmZQa0A">
+                    <img src="../kuvat/Juliste_Soijamakkaravarkaat_Lahja.jpg" alt="Poster of Lahja" loading="lazy">
+                    
+                    <span class="visually-hidden">Play Lahja</span>
+                </a>
+                <h2>Lahja</h2>
+                <p>Placeholder elokuvan kuvaukselle.</p>
+            </article>
+            <article class="elokuva" data-video="xWi4Vn8nw5A" data-title="Valitsen sinut">
+                <a class="juliste" href="https://www.youtube.com/watch?v=xWi4Vn8nw5A">
+                    <img src="../kuvat/Juliste_soijamakkaravarkaat_valitsen_sinut.jpg" alt="Poster of Valitsen sinut" loading="lazy">
+                    
+                    <span class="visually-hidden">Play Valitsen sinut</span>
+                </a>
+                <h2>Valitsen sinut</h2>
+                <p>Placeholder elokuvan kuvaukselle.</p>
+            </article>
+            <article class="elokuva" data-video="1y6P9NFJGNc" data-title="Kaikkien aikojen elokuva">
+                <a class="juliste" href="https://www.youtube.com/watch?v=1y6P9NFJGNc">
+                    <img src="../kuvat/soijamakkaravarkaat_kaikkien_aikojen_elokuva.jpg" alt="Poster of Kaikkien aikojen elokuva" loading="lazy">
+                    
+                    <span class="visually-hidden">Play Kaikkien aikojen elokuva</span>
+                </a>
+                <h2>Kaikkien aikojen elokuva</h2>
+                <p>Placeholder elokuvan kuvaukselle.</p>
+            </article>
+        </div>
+    </main>
+
+    <footer id="alatunniste">
+        <h2>Get in touch</h2>
+        <p>Got a project in mind? Let's talk.</p>
+        <p><a href="mailto:hello@example.com" id="maili">hello@example.com</a></p>
+        <ul class="sosiaalinen">
+            <li><a href="https://www.instagram.com/" rel="noopener">Instagram</a></li>
+            <li><a href="https://www.linkedin.com/" rel="noopener">LinkedIn</a></li>
+        </ul>
+        <p class="tekijanoikeus"><em>&copy; 2026 Samuli Kivelä</em></p>
+    </footer>
+</body>
+</html>
