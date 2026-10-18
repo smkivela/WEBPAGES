@@ -19,6 +19,7 @@
 
         const id = kortti.dataset.video;
         const nimi = kortti.dataset.title;
+        const kuvausElementti = kortti.querySelector('p');
 
         soitin = document.createElement('div');
         soitin.className = 'soitin';
@@ -34,18 +35,32 @@
         iframe.allowFullscreen = true;
         kehys.appendChild(iframe);
 
+        const tiedot = document.createElement('div');
+        tiedot.className = 'tiedot';
+
+        const otsikko = document.createElement('h2');
+        otsikko.textContent = nimi;
+
+        const kuvaus = document.createElement('p');
+        kuvaus.textContent = kuvausElementti ? kuvausElementti.textContent : '';
+
         const sulkija = document.createElement('button');
         sulkija.type = 'button';
         sulkija.className = 'sulje';
         sulkija.textContent = 'Close video';
         sulkija.addEventListener('click', () => sulje(true));
 
-        soitin.append(kehys, sulkija);
+        tiedot.append(otsikko, kuvaus, sulkija);
+        soitin.append(kehys, tiedot);
         ruudukko.after(soitin);
         kortti.classList.add('valittu');
 
         const rauhallinen = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        soitin.scrollIntoView({ behavior: rauhallinen ? 'auto' : 'smooth', block: 'nearest' });
+        const mobiili = window.matchMedia('(max-width: 700px)').matches;
+        soitin.scrollIntoView({
+            behavior: rauhallinen ? 'auto' : 'smooth',
+            block: mobiili ? 'start' : 'nearest'
+        });
     }
 
     kortit.forEach(kortti => {
