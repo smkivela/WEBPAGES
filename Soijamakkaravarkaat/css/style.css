@@ -454,6 +454,18 @@ body.etusivu {
         text-align: center;
     }
 
+    body.etusivu h1,
+    #slogan,
+    .sivun-johdanto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #slogan,
+    .sivun-johdanto {
+        text-align: center;
+    }
+
     body.etusivu h1 {
         margin-left: auto;
         margin-right: auto;
