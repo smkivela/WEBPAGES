@@ -180,7 +180,7 @@ body.etusivu {
     content: "";
     position: absolute;
     inset: 0;
-    background: url("../Kuvat/tausta.png") center / cover no-repeat;
+    background: url("../kuvat/tausta.png") center / cover no-repeat;
     opacity: .35;
     animation: tausta-zoom 8s ease-in-out infinite alternate;
 }
