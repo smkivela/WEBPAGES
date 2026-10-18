@@ -1,8 +1,8 @@
 :root {
     --bg: radial-gradient(circle, #15132b, #000102);
     --bg-solid: #0F1A22;
-    --surface: #181832;
-    --ink: #E8ECEE;
+    --surface: #070713;
+    --ink: #eeece8;
     --muted: #9DAEB9;
     --line: #35495A;
     --accent: #aac0f5;
@@ -54,6 +54,16 @@ h1 {
     font-weight: 800;
     font-size: clamp(2.6rem, 10vw, 6.5rem);
     letter-spacing: -.03em;
+}
+
+body.etusivu h1 {
+    width: fit-content;
+    max-width: 100%;
+    background: linear-gradient(90deg, var(--ink) 40%, rgba(232, 236, 238, .45) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 h2 {
@@ -191,7 +201,7 @@ body.etusivu {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    margin-top: 3rem;
+    margin-top: 7rem;
 }
 
 .polku {
