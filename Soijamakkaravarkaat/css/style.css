@@ -30,6 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+
 }
 
 a {
@@ -56,14 +57,101 @@ h1 {
     letter-spacing: -.03em;
 }
 
+h2 {
+    font-weight: 800;
+    font-size: clamp(1rem, 4vw, 1.6rem);
+    letter-spacing: -.02em;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 0;
+}
+
 body.etusivu h1 {
-    width: fit-content;
-    max-width: 100%;
-    background: linear-gradient(90deg, var(--ink) 40%, rgba(238, 238, 232, 0.9) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
+    width: auto;
+    margin: 0;
+
+    font-size: clamp(3rem, 15vw, 8.5rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+
+    background: none;
+    color: var(--ink);
+    -webkit-text-fill-color: currentColor;
+    text-shadow: 0 0 40px rgba(170, 192, 245, 0.35);
+}
+
+.logo-rivi {
+    display: block;
+    opacity: 0;
+    animation: logo-sisaan 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+
+.logo-rivi:nth-child(2) { animation-delay: 0.25s; }
+.logo-rivi:nth-child(3) { animation-delay: 0.5s; }
+
+@keyframes logo-sisaan {
+    from {
+        opacity: 0;
+        filter: blur(18px);
+        transform: scale(1.08) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: none;
+    }
+}
+
+/* Pieni viiva logon alla, kasvaa keskeltä */
+.viiva {
+    display: block;
+    width: 0;
+    height: 2px;
+    margin: 1.8rem 0 1.5rem;
+    background: var(--accent);
+    animation: viiva-kasvaa 0.9s ease 1s forwards;
+}
+
+@keyframes viiva-kasvaa {
+    to { width: min(120px, 30vw); }
+}
+
+/* Slogan, johdanto ja kortit ilmestyvät viimeisenä */
+.hero #slogan,
+.hero .sivun-johdanto {
+    margin: 0 auto 0.8rem;
+    opacity: 0;
+    animation: ilmesty 1s ease forwards;
+    animation-delay: 1.3s;
+}
+
+.hero .sivun-johdanto {
+    animation-delay: 1.5s;
+}
+
+.polut {
+    margin-top: 2rem;
+}
+
+.polku {
+    opacity: 0;
+    animation: ilmesty 1s ease 1.8s forwards;
+}
+
+@keyframes ilmesty {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
 }
 
 h2 {
@@ -145,6 +233,7 @@ nav a[aria-current="page"] {
     color: var(--muted);
     max-width: 40ch;
     margin: .5rem 0 2rem;
+    letter-spacing: 1rem;
 }
 
 .sivun-johdanto {
@@ -201,7 +290,7 @@ body.etusivu {
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    margin-top: 7rem;
+    margin-top: 1rem;
 }
 
 .polku {
@@ -341,6 +430,7 @@ body.etusivu {
     padding: 2rem 1.25rem;
     text-align: center;
     width: 100%;
+    font-size: 0.9rem;
     
 }
 
@@ -448,6 +538,24 @@ body.etusivu {
     .tausta::before {
         background-position: 20% center;
         transform-origin: 20% center;
+    }
+
+
+    #pääsisältö {
+        padding-top: 0.4rem;
+    }
+
+    #slogan {
+        margin-bottom: 0.4rem;
+    }
+
+    .sivun-johdanto {
+        margin-bottom: 0.4rem;
+    }
+
+    .polut {
+        margin-top: 0.1rem;
+        gap: 1rem;
     }
 
     h1 {
