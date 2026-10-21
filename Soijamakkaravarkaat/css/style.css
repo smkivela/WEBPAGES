@@ -125,16 +125,18 @@ h1.herootsikko {
 }
 /* Slogan, johdanto ja kortit ilmestyvät viimeisenä */
 
-.hero #slogan,
-.hero .sivun-johdanto {
-    margin: 0 auto 0.8rem;
+.hero #slogan {
+    margin: 50px auto 50px;
     opacity: 0;
     animation: ilmesty 1s ease forwards;
     animation-delay: 1.3s;
+    font-family: "Bangers", "Bricolage Grotesque", "Arial Narrow", Arial, sans-serif;
+    color: var(--ink);
+    -webkit-text-fill-color: currentColor;
+    font-size: 1.5rem;
 }
-.hero .sivun-johdanto {
-    animation-delay: 1.5s;
-}
+
+
 .polut {
     margin-top: 2rem;
 }
