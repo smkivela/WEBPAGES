@@ -14,7 +14,18 @@
 
 <body class="etusivu">
     <div class="tausta" aria-hidden="true">
-        <video autoplay muted loop playsinline poster="kuvat/tausta.png" src="videot/taustavideo.mp4"></video>
+        <video
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    poster="kuvat/tausta.png"
+    aria-hidden="true"
+>
+    <source src="videot/taustavideo.mp4" type="video/mp4">
+</video>
     </div>
 
     <main id="pääsisältö">
@@ -27,7 +38,7 @@
 
             <span class="viiva" aria-hidden="true"></span>
 
-            <p id="slogan"><em>Uskomattoman naseva slogan.</em></p>
+            <p id="slogan">Uskomattoman naseva slogan.</p>
         </section>
 
         <div class="polut">
