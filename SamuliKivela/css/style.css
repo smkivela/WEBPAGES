@@ -944,12 +944,26 @@ footer p {
         padding: 0 0 0 60px;
         max-width: 55%;
 
+        /* Aina kahden rivin korkeus, jotta header on joka sivulla yhtä korkea
+           (Home-otsikko on kaksirivinen, Work yksirivinen) */
+        min-height: 2em;
+
         font-size: clamp(3rem, 8vw, 9rem);
     }
 
+    /* Slogan rivittyy sivusta riippuen eri määrälle rivejä, joten varataan
+       aina neljän rivin tila, ettei headerin korkeus vaihtele sivujen välillä */
     #slogan {
         padding: 0 0 0 60px;
         max-width: 45%;
+        min-height: calc(4 * 1.3em);
+    }
+}
+
+/* Kapealla työpöydällä Home-slogan rivittyy viidelle riville */
+@media (min-width: 801px) and (max-width: 1000px) {
+    #slogan {
+        min-height: calc(5 * 1.3em);
     }
 }
 

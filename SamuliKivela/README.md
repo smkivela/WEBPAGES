@@ -75,7 +75,7 @@ Kuvat/tyot/         Work-sivun julisteet pakattuina (alkuperäiset gitissä, com
 
 
 
-<!-- Clauden tekemät parannukset (marraskuu 2026) -->
+<!-- Parannukset (marraskuu 2026) -->
 
 
 

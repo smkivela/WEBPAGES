@@ -358,7 +358,7 @@
     </footer>
 
 
-    <!-- CLAUDEN TEKEMÄ ANIMOITU ÄÄNIAALTO -->
+    <!-- ANIMOITU ÄÄNIAALTO -->
 
     <script>
     (function () {
@@ -378,6 +378,7 @@
 
         // Animaation tila: käyttäjä voi pysäyttää sen, ja se pysähtyy
         // itsestään, kun aalto ei ole näkyvissä (säästää akkua).
+
         let kayttajaPysaytti = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         let naytolla = true;
         let animaatioId = null;
@@ -388,6 +389,7 @@
             tavoite.amp = 1 - (e.clientY - r.top) / r.height; // 0 → 1
 
             // Pysäytettynäkin aalto reagoi hiireen, mutta ei liiku itsestään
+
             if (kayttajaPysaytti) {
                 nykyinen.amp = tavoite.amp;
                 nykyinen.freq = tavoite.freq;
@@ -415,7 +417,9 @@
         }
 
         function animoi() {
+
             // pehmeä siirtymä kohti tavoitearvoja
+
             nykyinen.amp += (tavoite.amp - nykyinen.amp) * 0.08;
             nykyinen.freq += (tavoite.freq - nykyinen.freq) * 0.08;
             vaihe += 0.01 + nykyinen.freq * 0.01;
@@ -458,12 +462,14 @@
     </script>
 
 
-    <!-- CLAUDEN TEKEMÄ SCROLL-ANIMAATIO -->
+    <!-- SCROLL-ANIMAATIO -->
 
     <script>
     (function () {
+
         // Ei animaatiota, jos käyttäjä on pyytänyt vähemmän liikettä
         // tai selain ei tue IntersectionObserveria
+
         if (
             window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
             !("IntersectionObserver" in window)
@@ -480,14 +486,17 @@
                 if (!merkinta.isIntersecting) return;
 
                 // Jos useampi elementti ilmestyy yhtä aikaa, ne tulevat porrastetusti
+
                 merkinta.target.style.transitionDelay = jarjestys * 0.12 + "s";
                 merkinta.target.classList.add("nakyvissa");
                 jarjestys++;
 
                 // Animaatio tapahtuu vain kerran
+
                 tarkkailija.unobserve(merkinta.target);
 
                 // Viive pois animaation jälkeen, ettei se hidasta hover-efektiä
+
                 merkinta.target.addEventListener("transitionend", () => {
                     merkinta.target.style.transitionDelay = "";
                 }, { once: true });
@@ -504,7 +513,7 @@
     </script>
 
 
-    <!-- CLAUDEN TEKEMÄ LOMAKKEEN LÄHETYS (Netlify Forms) -->
+    <!-- LOMAKKEEN LÄHETYS (Netlify Forms) -->
 
     <script>
     (function () {
@@ -516,6 +525,7 @@
             e.preventDefault();
 
             // Selaimen oma tarkistus (pakolliset kentät, sähköpostin muoto)
+
             if (!lomake.reportValidity()) return;
 
             nappi.disabled = true;
@@ -543,7 +553,7 @@
     })();
     </script>
 
-    <!-- CLAUDEN TEKEMÄ HAMPURILAISVALIKKO (mobiili) -->
+    <!-- HAMPURILAISVALIKKO (mobiili) -->
 
     <script>
     (function () {
@@ -552,6 +562,7 @@
         const mobiili = window.matchMedia("(max-width: 800px)");
 
         // Ilman JavaScriptiä valikko näkyy aina auki, joten nappi otetaan käyttöön vasta tässä
+
         navi.classList.add("on-valikko");
         nappi.hidden = false;
 
@@ -566,6 +577,7 @@
         });
 
         // Esc sulkee ja palauttaa fokuksen napille
+
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape" && navi.classList.contains("auki")) {
                 aseta(false);
@@ -574,11 +586,13 @@
         });
 
         // Klikkaus valikon ulkopuolelle tai linkkiin sulkee
+
         document.addEventListener("click", (e) => {
             if (!navi.contains(e.target) || e.target.closest("a")) aseta(false);
         });
 
         // Isolle näytölle siirryttäessä valikko kiinni
+        
         mobiili.addEventListener("change", () => aseta(false));
     })();
     </script>
