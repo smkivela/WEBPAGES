@@ -1,7 +1,0 @@
-# Netlify julkaisee vain SamuliKivela-kotisivun (repossa on myös muita sivustoja)
-[build]
-  base = "SamuliKivela"
-  # Suhteessa base-kansioon, eli julkaistaan SamuliKivela/ sellaisenaan
-  publish = "."
-  # Pelkkää HTML/CSS:ää, ei build-vaihetta
-  command = ""
