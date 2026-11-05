@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is the official homepage of musician Samuli Kivelä">
+
+    <!-- Sosiaalisen median kortti -->
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Samuli Kivelä">
+    <meta property="og:description" content="Welcome to my world of music, sound and programming">
+    <meta property="og:url" content="https://smkivela.github.io/HTML26/Tuntiharjoitukset/CSS%20LOPPUTEHT%C3%84V%C3%84/index.html">
+    <meta property="og:image" content="https://smkivela.github.io/HTML26/Tuntiharjoitukset/CSS%20LOPPUTEHT%C3%84V%C3%84/Kuvat/headertaustaog.jpg">
+    <meta property="og:image:alt" content="Samuli Kivelä, musician and sound designer">
+
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+
+    
+
+    <title>Samuli Kivelä - Homepage</title>
+    
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="Kuvat/favicon.svg" type="image/svg+xml">
+</head>
+
+
+
+<body>
+
+    <!-- HEADER -->
+
+
+  <div class="header-container"> <!-- CONTAINER HEADERILLE, JOTTA SAAN KUPERALLE ALAREUNALLE VARJON -->
+
+    <header id="ylätunniste">
+
+        <h1>Samuli Kivelä</h1>
+
+        <p id="slogan">
+            <em>Welcome to my world of music, sound and programming</em>
+        </p>
+
+
+        <!-- KAKSI NAVIGAATIOTA -->
+
+        <div class="header-nav">
+
+            <!-- SIVUN NAVIGAATIO -->
+
+            <nav id="navigointi-left" aria-label="pages">
+
+                <ul class="navi">
+
+                   <li>
+                        <a href="index.html" aria-current="page" class="navinappi">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="pages/work.html" class="navinappi">
+                            Work
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="pages/cv.html" class="navinappi" target="_blank" rel="noopener">
+                            CV <span aria-hidden="true">&#8599;</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- SOSIAALISET MEDIAT -->
+
+            <nav id="navigointi-right" aria-label="social media">
+
+                <ul class="navi">
+
+                    <li>
+                        <a href="https://www.instagram.com/samuli_kivela/" class="navinappi">
+                            Instagram
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="https://www.linkedin.com/in/samuli-kivel%C3%A4/" class="navinappi">
+                            Linkedin
+                        </a>
+                    </li>
+
+                
+
+                </ul>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+  </div> <!-- SULJETAAN HEADERIN CONTAINER -->
+
+
+    <!-- PÄÄSISÄLTÖ -->
+
+    <main id="pääsisältö">
+
+        <section>
+
+
+
+
+            <!-- SERVICES -->
+
+            <div class="sektiot">
+
+
+                <section class="kortti">
+
+
+                    <img src="Kuvat/mproduction.png" alt="Music Production" class="kortti-kuva">
+
+                    <h2>Music Production</h2>
+
+                    <p>
+                        I produce music across different genres and without
+                        limits of the concept, so it can be for artists, ads,
+                        films, or any creative project.
+
+                        From clean mixes to full-on production, I can make
+                        sure every sound hits just right.
+                    </p>
+
+                </section>
+
+
+                <section class="kortti">
+
+                    <img src="Kuvat/sound.webp" alt="Sound Design" class="kortti-kuva">
+                    <h2>Sound Design</h2>
+
+                    <p>
+                        Over the years I’ve created sound design for games,
+                        theater, ads, films, art performances and pretty much
+                        anything that needs a unique sound.
+
+                        Got a project in mind?
+                        Let’s make it sound amazing.
+                    </p>
+
+                </section>
+
+
+                <section class="kortti">
+
+                    <img src="Kuvat/guitar.webp" alt="Guitar Lessons" class="kortti-kuva">
+                    <h2>Guitar Lessons</h2>
+
+                    <p>
+                        I teach beginners and advanced players of all ages.
+
+                        Been doing this for years, so I’ll help you learn
+                        the basics, get better technique, or learn some
+                        killer solos.
+
+                        We can have the sessions in my studio at Vuosaari,
+                        Helsinki.
+
+                        Hit me up and let’s jam!
+
+                        <br><br>
+
+                        Starting from 45€ / 45min
+                    </p>
+
+                </section>
+
+
+                 <!-- PROGRAMMING --> 
+
+            <section class="kortti">
+
+                <!-- CLAUDEN AVULLA TEHTY ÄÄNIAALTO -->
+
+                    <svg class="kortti-kuva aalto-svg" viewBox="0 0 400 280"
+                        preserveAspectRatio="xMidYMid slice" role="img"
+                        aria-label="Oscilloscope-style sound wave that reacts to the mouse">
+                        <defs>
+                            <radialGradient id="ruutu-tausta" cx="50%" cy="50%" r="75%">
+                                <stop offset="0%" stop-color="rgb(40, 26, 14)" />
+                                <stop offset="100%" stop-color="rgb(10, 6, 2)" />
+                            </radialGradient>
+
+                            <filter id="hehku" x="-10%" y="-30%" width="120%" height="160%">
+                                <feGaussianBlur stdDeviation="4" />
+                            </filter>
+                        </defs>
+
+                        <rect width="400" height="280" fill="url(#ruutu-tausta)" />
+
+                        <!-- Ruudukko -->
+                        <path class="ruudukko"
+                            d="M50 0V280 M100 0V280 M150 0V280 M250 0V280 M300 0V280 M350 0V280
+                                M0 35H400 M0 70H400 M0 105H400 M0 175H400 M0 210H400 M0 245H400" />
+
+                        <!-- Keskiakselit -->
+                        <path class="akseli" d="M200 0V280 M0 140H400" />
+
+                        <!-- Asteikkoviivat akselien päällä -->
+                        <path class="asteikko" d="M0 140H400 M200 0V280" />
+
+                        <!-- Aalto: hehku + terävä viiva -->
+                        <path class="aalto aalto-hehku" filter="url(#hehku)" />
+                        <path class="aalto aalto-viiva" />
+                    </svg>
+                <h2>Programming</h2>
+
+                <p>
+                    I'm currently studying programming and exploring how
+                    coding can be used to create websites, software, and
+                    other digital tools.
+
+                    This website is made by me using HTML, CSS, and JavaScript.
+                </p>
+
+            </section>
+
+            </div>
+
+
+
+
+
+
+<!-- AUDIOREEL -->
+
+
+<!-- MOBIILISSA PELKKÄ LINKKI, KOSKA DRIVEUPOTUS EI TOIMINUT HYVIN. -->
+
+<p class="video-linkki">
+    <a href="https://drive.google.com/file/d/1wWGMAIc3ltgHZ-Iq0VxycG89lCsigDwL/view"
+       target="_blank"
+       rel="noopener">
+        Watch my audio reel ↗
+    </a>
+</p>
+
+<!-- LEVEÄLLÄ NÄYTÖLLÄ UPOTETTU VIDEO -->
+
+<div class="video-osio desktop-audioreel">
+    <iframe
+        src="https://drive.google.com/file/d/1wWGMAIc3ltgHZ-Iq0VxycG89lCsigDwL/preview"
+        title="Audio reel: selected work in music and sound design"
+        allow="autoplay; fullscreen"
+        allowfullscreen
+        tabindex="-1">
+    </iframe>
+</div>
+
+
+
+
+
+    </section>
+
+    </main>
+
+    <section id="contact">
+    <h2>Contact</h2>
+    <p>
+        Got a project or idea in mind? Don’t hesitate to get in touch,
+        I don’t mind if you’re just starting out, or already have a clear vision,
+        let’s talk!
+    </p>
+
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Name <span>(required)</span></legend>
+
+            <label>
+                First Name
+                <input type="text" name="first-name" required>
+            </label>
+
+            <label>
+                Last Name
+                <input type="text" name="last-name" required>
+            </label>
+        </fieldset>
+
+        <label>
+            Email <span>(required)</span>
+            <input type="email" name="email" required>
+        </label>
+
+        <label>
+            Message <span>(required)</span>
+            <textarea name="message" rows="6" required></textarea>
+        </label>
+
+        <button type="submit">Send</button>
+    </form>
+</section>
+
+
+    <!-- FOOTER -->
+
+    <footer id="alatunniste">
+
+        <p>
+            <em>&copy; 2026 Samuli Kivelä</em>
+        </p>
+
+        <p>
+            <a href="mailto:sm.kivela@gmail.com" id="maili">
+                sm.kivela@gmail.com
+            </a>
+        </p>
+
+    </footer>
+
+
+    <!-- CLAUDEN TEKEMÄ ANIMOITU ÄÄNIAALTO -->
+
+    <script>
+    const svg = document.querySelector(".aalto-svg");
+    const aallot = svg.querySelectorAll(".aalto");
+
+    const W = 400;
+    const H = 280;
+    const PISTEET = 80;
+
+    const lepo = { amp: 0.25, freq: 0.3 };
+    const tavoite = { ...lepo };
+    const nykyinen = { ...lepo };
+    let vaihe = 0;
+
+    svg.addEventListener("pointermove", (e) => {
+        const r = svg.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width;   // 0 → 1
+        const y = (e.clientY - r.top) / r.height;   // 0 → 1
+
+        tavoite.freq = x;
+        tavoite.amp = 1 - y;
+    });
+
+    svg.addEventListener("pointerleave", () => {
+        tavoite.amp = lepo.amp;
+        tavoite.freq = lepo.freq;
+    });
+
+    function piirra() {
+        const amp = nykyinen.amp * 100;
+        const taajuus = 1 + nykyinen.freq * 5;
+
+        let d = "";
+        for (let p = 0; p <= PISTEET; p++) {
+            const t = p / PISTEET;
+            const y = H / 2 + Math.sin(t * taajuus * Math.PI * 2 + vaihe) * amp;
+            d += (p === 0 ? "M" : "L") + (t * W).toFixed(1) + " " + y.toFixed(1) + " ";
+        }
+
+        aallot.forEach((polku) => polku.setAttribute("d", d));
+    }
+
+    function animoi() {
+        // pehmeä siirtymä kohti tavoitearvoja
+        nykyinen.amp += (tavoite.amp - nykyinen.amp) * 0.08;
+        nykyinen.freq += (tavoite.freq - nykyinen.freq) * 0.08;
+        vaihe += 0.01 + nykyinen.freq * 0.01;
+
+        piirra();
+        requestAnimationFrame(animoi);
+    }
+
+    // Kunnioitetaan käyttäjän "vähennä liikettä" -asetusta
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        piirra();
+    } else {
+        animoi();
+    }
+
+    
+</script>
+
+<!-- CLAUDEN TEKEMÄ SCROLL-ANIMAATIO -->
+
+<script>
+(function () {
+    // Ei animaatiota, jos käyttäjä on pyytänyt vähemmän liikettä
+    // tai selain ei tue IntersectionObserveria
+    if (
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+        !("IntersectionObserver" in window)
+    ) {
+        return;
+    }
+
+    const kohteet = document.querySelectorAll(".kortti, .video-osio");
+
+    const tarkkailija = new IntersectionObserver((merkinnat) => {
+        let jarjestys = 0;
+
+        merkinnat.forEach((merkinta) => {
+            if (!merkinta.isIntersecting) return;
+
+            // Jos useampi elementti ilmestyy yhtä aikaa, ne tulevat porrastetusti
+            merkinta.target.style.transitionDelay = jarjestys * 0.12 + "s";
+            merkinta.target.classList.add("nakyvissa");
+            jarjestys++;
+
+            // Animaatio tapahtuu vain kerran
+            tarkkailija.unobserve(merkinta.target);
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    kohteet.forEach((elementti) => {
+        elementti.classList.add("fade-in");
+        tarkkailija.observe(elementti);
+    });
+})();
+</script>
+
+
+</body>
+
+</html>
