@@ -215,6 +215,15 @@ h1 {
 }
 
 
+/* Työpöydällä paneeli on "läpinäkyvä": navit asettuvat suoraan .header-navin sisään */
+.nav-paneeli {
+    display: contents;
+}
+
+.valikko-nappi {
+    display: none;
+}
+
 .navi {
     list-style: none;
 
@@ -956,15 +965,17 @@ footer p {
         padding-bottom: 40px;
     }
 
-    /* navigaatio ylös */
+    /* navigaatio ylös oikeaan reunaan */
     .header-nav {
         order: -1;
+        position: relative;
+        z-index: 2;
         margin-top: 0;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 10px;
+        justify-content: flex-end;
+        align-items: flex-start;
 
-        padding: 20px 15px 40px;
+        padding: 14px 15px 40px;
+        text-align: left;
     }
 
     /* otsikko ja slogan alas */
@@ -972,15 +983,124 @@ footer p {
         margin-top: auto;
     }
 
-    .navi {
+
+    /* HAMPURILAISVALIKKO */
+
+    .valikko-nappi {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 8px;
-        align-items: flex-start;
+        place-items: center;
+
+        width: 48px;
+        height: 48px;
+        padding: 0;
+
+        color: var(--Tekstivärivaalea);
+        background: color-mix(in srgb, var(--Tumma-tausta) 60%, transparent);
+        border: 1px solid color-mix(in srgb, var(--Tekstivärivaalea) 35%, transparent);
+        border-radius: 50%;
+
+        cursor: pointer;
+        transition: color 0.3s ease, border-color 0.3s ease;
     }
 
-    #navigointi-right .navi {
-        align-items: flex-end;
+    .valikko-nappi[hidden] {
+        display: none;
+    }
+
+    .valikko-nappi[aria-expanded="true"] {
+        color: var(--Tekstivärikulta);
+        border-color: var(--Tekstivärikulta);
+    }
+
+    /* Kolme viivaa: keskiviiva + ::before ja ::after. Auki-tilassa ristiksi. */
+    .valikko-ikoni,
+    .valikko-ikoni::before,
+    .valikko-ikoni::after {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: currentColor;
+        border-radius: 2px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .valikko-ikoni {
+        position: relative;
+    }
+
+    .valikko-ikoni::before,
+    .valikko-ikoni::after {
+        content: "";
+        position: absolute;
+        left: 0;
+    }
+
+    .valikko-ikoni::before { transform: translateY(-7px); }
+    .valikko-ikoni::after  { transform: translateY(7px); }
+
+    .valikko-nappi[aria-expanded="true"] .valikko-ikoni {
+        background-color: transparent;
+    }
+
+    .valikko-nappi[aria-expanded="true"] .valikko-ikoni::before {
+        transform: rotate(45deg);
+    }
+
+    .valikko-nappi[aria-expanded="true"] .valikko-ikoni::after {
+        transform: rotate(-45deg);
+    }
+
+
+    /* Paneeli: ilman JavaScriptiä aina näkyvissä, muuten avautuu napista */
+    .nav-paneeli {
+        display: flex;
+        flex-direction: column;
+        min-width: 210px;
+        padding: 8px;
+
+        background: color-mix(in srgb, var(--Tumma-tausta) 92%, transparent);
+        border: 1px solid color-mix(in srgb, var(--Tekstivärikulta) 30%, transparent);
+        border-radius: var(--radius-m);
+        box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .on-valikko .nav-paneeli {
+        position: absolute;
+        top: 72px;
+        right: 15px;
+
+        visibility: hidden;
+        opacity: 0;
+        translate: 0 -8px;
+        transition: opacity 0.25s ease, translate 0.25s ease, visibility 0s linear 0.25s;
+    }
+
+    .on-valikko.auki .nav-paneeli {
+        visibility: visible;
+        opacity: 1;
+        translate: 0 0;
+        transition: opacity 0.25s ease, translate 0.25s ease, visibility 0s;
+    }
+
+    .navi {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Ohut viiva sivunavigaation ja somen väliin */
+    #navigointi-right {
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px solid color-mix(in srgb, var(--Tekstivärivaalea) 20%, transparent);
+    }
+
+    .navinappi {
+        font-size: 1rem;
+        padding: 0.6em 1em;
+    }
+
+    .navinappi:hover {
+        scale: none;
     }
 }
 
@@ -996,32 +1116,6 @@ footer p {
     header {
         min-height: 92svh;
         text-align: left;
-    }
-
-    /* navigaatio ylös, kokonaan vaakaan, space-between */
-
-    .header-nav {
-        order: -1;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 4px;
-        padding: 14px 8px 40px;
-    }
-
-    .navi,
-    #navigointi-right .navi {
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 0;
-    }
-
-    .navinappi {
-        font-size: 0.8125rem;
-        padding: 0.5em 0.55em;
-        white-space: nowrap;
     }
 
     /* otsikko vasemmalle, alas */

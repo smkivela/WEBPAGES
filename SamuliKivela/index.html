@@ -56,6 +56,15 @@
 
             <div class="header-nav">
 
+                <!-- HAMPURILAISNAPPI: näkyy vain mobiilissa -->
+
+                <button type="button" class="valikko-nappi" aria-expanded="false"
+                        aria-controls="nav-paneeli" aria-label="Open menu" hidden>
+                    <span class="valikko-ikoni" aria-hidden="true"></span>
+                </button>
+
+                <div class="nav-paneeli" id="nav-paneeli">
+
                 <!-- SIVUN NAVIGAATIO -->
 
                 <nav id="navigointi-left" aria-label="Main">
@@ -88,6 +97,8 @@
                         </li>
                     </ul>
                 </nav>
+
+                </div> <!-- /nav-paneeli -->
 
             </div>
 
@@ -529,6 +540,46 @@
                 nappi.disabled = false;
             }
         });
+    })();
+    </script>
+
+    <!-- CLAUDEN TEKEMÄ HAMPURILAISVALIKKO (mobiili) -->
+
+    <script>
+    (function () {
+        const navi = document.querySelector(".header-nav");
+        const nappi = navi.querySelector(".valikko-nappi");
+        const mobiili = window.matchMedia("(max-width: 800px)");
+
+        // Ilman JavaScriptiä valikko näkyy aina auki, joten nappi otetaan käyttöön vasta tässä
+        navi.classList.add("on-valikko");
+        nappi.hidden = false;
+
+        function aseta(auki) {
+            nappi.setAttribute("aria-expanded", String(auki));
+            nappi.setAttribute("aria-label", auki ? "Close menu" : "Open menu");
+            navi.classList.toggle("auki", auki);
+        }
+
+        nappi.addEventListener("click", () => {
+            aseta(nappi.getAttribute("aria-expanded") !== "true");
+        });
+
+        // Esc sulkee ja palauttaa fokuksen napille
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && navi.classList.contains("auki")) {
+                aseta(false);
+                nappi.focus();
+            }
+        });
+
+        // Klikkaus valikon ulkopuolelle tai linkkiin sulkee
+        document.addEventListener("click", (e) => {
+            if (!navi.contains(e.target) || e.target.closest("a")) aseta(false);
+        });
+
+        // Isolle näytölle siirryttäessä valikko kiinni
+        mobiili.addEventListener("change", () => aseta(false));
     })();
     </script>
 
