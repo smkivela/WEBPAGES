@@ -11,6 +11,7 @@ pages/cv.html       CV, tälle on oma css. Aukeaa uuteen välilehteen.
 css/style.css       Etusivun ja Work-sivun tyylit
 css/cv.css          CV:n tyylit
 Kuvat/              Kuvat ja favicon
+Kuvat/tyot/         Work-sivun julisteet pakattuina (alkuperäiset gitissä, commit 46c421f)
 
 
 
@@ -67,5 +68,41 @@ Kuvat/              Kuvat ja favicon
 
 <!-- Kehittämiskohteet -->
 
--Lomake ei vielä lähetä viestejä; `action` on placeholder myöhempää varten.
 -Audioreel on Google Driven upotus, jonka ulkoasuun en voi vaikuttaa.
+-Lomake avaa sähköpostiohjelman. Oikea taustapalvelu (esim. Formspree) olisi seuraava askel.
+
+
+
+
+<!-- Clauden tekemät parannukset (marraskuu 2026) -->
+
+
+
+Saavutettavuus
+-Ohituslinkki ("Skip to main content") etusivulla ja work-sivulla.
+-Yhtenäinen, selvästi näkyvä focus-visible kaikissa linkeissä ja napeissa myös CV:ssä.
+-Nykyinen sivu navigaatiossa merkitään värin lisäksi alleviivauksella.
+-Navigaation kosketusalueet vähintään 44px korkeita.
+-Uuteen välilehteen aukeaville linkeille ruudunlukijateksti "(opens in a new tab)".
+-Audioreelin linkki näkyy nyt myös leveällä näytöllä, koska iframe on ohitettu tabindexillä.
+-Äänialtolle pysäytä/toista-nappi (WCAG 2.2.2). Animaatio pysähtyy myös, kun aalto ei ole näkyvissä.
+-Otsikon background-clip: text vaihdettu tavalliseksi väriksi, koska se piilotti otsikon Windowsin suurikontrastitilassa. Lisäksi forced-colors-tyylit.
+-Lomakkeeseen autocomplete-attribuutit, ohjeteksti, virheellisen kentän korostus (:user-invalid) ja role="status"-viesti.
+
+Semantiikka
+-Yhteydenotto siirretty main-elementin sisään. Etusivulla otsikot Services ja Audio reel.
+-Palvelukortit ja työkortit ovat article-elementtejä h3-otsikoilla. Otsikkotasot eivät hyppää.
+-Work-sivun kortit: otsikko on nappi (aria-expanded), joka avaa kuvauksen. Toimii hiirellä, näppäimistöllä ja puhelimella. Esc sulkee.
+-CV: summaryjen sisällä oikeat h2-otsikot, työlistat ul-listoina, aikavälit kelvollisina time-elementteinä.
+-CV: sivupalkki DOMissa pääsisällön jälkeen, jotta ruudunlukija lukee nimen ja profiilin ensin. Grid pitää sen silti vasemmalla.
+-Koristeaallot piilotettu ruudunlukijalta (aria-hidden).
+
+Suorituskyky
+-Work-sivun kuvat pakattu 34 Mt → 3,1 Mt. Headerkuva 960 kt → 364 kt.
+-Kuville width/height (ei hyppimistä latautuessa) ja loading="lazy".
+-Google Fontsit yhdellä pyynnöllä.
+
+Ulkoasu
+-Osioiden otsikot otsikkofontilla ja kultaisella viivalla.
+-Palvelukortit gridissä, hover-nosto, hinta omalla rivillään.
+

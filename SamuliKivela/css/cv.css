@@ -26,7 +26,7 @@ html {
 body {
     background-color: var(--tausta);
     background-image: none;
-    color: var(--teksti);
+    color: var(--cv-teksti);
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 15px;
     line-height: 1.7;
@@ -49,7 +49,7 @@ header {
             rgba(7, 6, 7, 0.15) 45%,
             rgba(7, 6, 7, 0) 70%
         ),
-        url("../Kuvat/headertausta.jpg");
+        url("../Kuvat/headertausta-web.jpg");
 
     background-size: 100% 100%, cover;
     background-position: left top, 140px 20%;
@@ -282,7 +282,7 @@ header a:visited {
     text-decoration: underline !important;
     text-decoration-color: #73566d !important;
     text-underline-offset: 4px;
-    font-size: 0.75rem;
+    font-size: 0.875rem;
 }
 
 
@@ -407,6 +407,90 @@ header a:hover {
     color: #98748f;
 }
 
+/* CLAUDEN LISÄÄMÄT: OTSIKOT SUMMARYN SISÄLLÄ */
+
+/* Summaryn sisällä on oikea h2-otsikko (ruudunlukijan otsikkonavigointia varten).
+   Otsikko perii summaryn ulkoasun. */
+summary h2,
+.sidebar summary h2,
+.content summary h2 {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+}
+
+
+/* AIKAVÄLIT (esim. 2010–2017) */
+
+.sidebar .aika {
+    color: var(--sivupalkki-korostus);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.sidebar .aika time {
+    display: inline;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+}
+
+
+/* TYÖLISTAT */
+
+.content .ansiot {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.content .ansiot li {
+    margin-bottom: 14px;
+    padding-left: 0;
+}
+
+/* Vuosi omalle rivilleen samaan tyyliin kuin sivupalkissa */
+.vuosi {
+    display: block;
+    color: var(--korostus);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+
+/* FOKUS: selvästi näkyvä reunus näppäimistön käyttäjälle */
+
+:focus-visible {
+    outline: 3px solid var(--korostus);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+.sidebar :focus-visible,
+header :focus-visible {
+    outline-color: var(--sivupalkki-korostus);
+}
+
+
+/* WINDOWSIN SUURIKONTRASTITILA */
+
+@media (forced-colors: active) {
+    .siniaalto,
+    .kanttiaalto,
+    .aalto {
+        display: none;
+    }
+}
+
+
 /* SINIAALTO */
 .siniaalto {
     position: fixed;
@@ -510,7 +594,7 @@ header a:hover {
                 rgba(7, 6, 7, 0) 50%,
                 rgba(7, 6, 7, 1) 100%
             ),
-            url("../Kuvat/headertausta.jpg");
+            url("../Kuvat/headertausta-web.jpg");
 
         background-size: 100% 100%, cover;
         background-position: left top, 75% 20%;
@@ -640,7 +724,7 @@ header a:hover {
                 rgba(7, 6, 7, 0.15) 38%,
                 rgba(7, 6, 7, 0) 60%
             ),
-            url("../Kuvat/headertausta.jpg");
+            url("../Kuvat/headertausta-web.jpg");
 
         background-size: 100% 100%, auto 100%;
         background-position: left top, calc(100% + 160px) center;
