@@ -12,8 +12,8 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Samuli Kivelä">
     <meta property="og:description" content="Welcome to my world of music, sound and programming">
-    <meta property="og:url" content="https://smkivela.github.io/WEBPAGES/SamuliKivela/index.html">
-    <meta property="og:image" content="https://smkivela.github.io/WEBPAGES/SamuliKivela/Kuvat/headertaustaog.jpg">
+    <meta property="og:url" content="https://samulikivela.com/index.html">
+    <meta property="og:image" content="https://samulikivela.com/Kuvat/headertaustaog.jpg">
     <meta property="og:image:alt" content="Samuli Kivelä, musician and sound designer">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -278,14 +278,24 @@
                 let’s talk!
             </p>
 
-            <!-- Lomake avaa käyttäjän sähköpostiohjelman valmiiksi täytetyllä viestillä.
-                 Ilman JavaScriptiä action="mailto:" toimii varalla. -->
+            <!-- Lomake lähetetään Netlify Formsiin, joka välittää viestin sähköpostiin.
+                 JavaScript lähettää sen sivulla pysyen. Ilman JavaScriptiä selain
+                 siirtyy kiitossivulle (action). -->
 
-            <form id="yhteyslomake" action="mailto:sm.kivela@gmail.com" method="post" enctype="text/plain"
+            <form id="yhteyslomake" name="contact" method="POST" action="thanks.html"
+                  data-netlify="true" netlify-honeypot="bot-field"
                   aria-describedby="lomake-ohje">
 
+                <!-- Netlify tunnistaa lomakkeen tästä nimestä -->
+                <input type="hidden" name="form-name" value="contact">
+
+                <!-- Roskapostiansa: ihminen ei näe kenttää, botti täyttää sen -->
+                <p class="ansa" aria-hidden="true">
+                    <label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                </p>
+
                 <p id="lomake-ohje" class="lomake-ohje">
-                    All fields are required. Sending opens your email app with the message ready to go.
+                    All fields are required. I’ll reply to the email address you give.
                 </p>
 
                 <fieldset>
@@ -483,33 +493,41 @@
     </script>
 
 
-    <!-- CLAUDEN TEKEMÄ LOMAKKEEN LÄHETYS -->
+    <!-- CLAUDEN TEKEMÄ LOMAKKEEN LÄHETYS (Netlify Forms) -->
 
     <script>
     (function () {
         const lomake = document.querySelector("#yhteyslomake");
         const tila = lomake.querySelector(".lomake-tila");
+        const nappi = lomake.querySelector("button[type=submit]");
 
-        lomake.addEventListener("submit", (e) => {
+        lomake.addEventListener("submit", async (e) => {
             e.preventDefault();
 
             // Selaimen oma tarkistus (pakolliset kentät, sähköpostin muoto)
             if (!lomake.reportValidity()) return;
 
-            const data = new FormData(lomake);
-            const nimi = `${data.get("first-name")} ${data.get("last-name")}`.trim();
+            nappi.disabled = true;
+            tila.textContent = "Sending…";
 
-            const aihe = `Message from ${nimi} via samulikivela.com`;
-            const viesti = `${data.get("message")}\n\n${nimi}\n${data.get("email")}`;
+            try {
+                const vastaus = await fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(new FormData(lomake)).toString()
+                });
 
-            window.location.href =
-                "mailto:sm.kivela@gmail.com" +
-                "?subject=" + encodeURIComponent(aihe) +
-                "&body=" + encodeURIComponent(viesti);
+                if (!vastaus.ok) throw new Error(vastaus.status);
 
-            tila.textContent =
-                "Your email app should now open with the message. " +
-                "If nothing happened, email me directly at sm.kivela@gmail.com.";
+                lomake.reset();
+                tila.textContent = "Thanks! Your message has been sent. I’ll get back to you soon.";
+            } catch (virhe) {
+                tila.textContent =
+                    "Sorry, the message could not be sent. " +
+                    "Please email me directly at sm.kivela@gmail.com.";
+            } finally {
+                nappi.disabled = false;
+            }
         });
     })();
     </script>

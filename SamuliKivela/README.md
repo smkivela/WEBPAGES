@@ -7,6 +7,7 @@ Samuli Kivelä: Kotisivu
 
 index.html          Etusivu: palvelut, audioreel, lomake
 pages/work.html     Valitut työt 
+thanks.html         Kiitossivu lomakkeen jälkeen (jos JavaScript ei ole käytössä)
 pages/cv.html       CV, tälle on oma css. Aukeaa uuteen välilehteen.
 css/style.css       Etusivun ja Work-sivun tyylit
 css/cv.css          CV:n tyylit
@@ -69,7 +70,7 @@ Kuvat/tyot/         Work-sivun julisteet pakattuina (alkuperäiset gitissä, com
 <!-- Kehittämiskohteet -->
 
 -Audioreel on Google Driven upotus, jonka ulkoasuun en voi vaikuttaa.
--Lomake avaa sähköpostiohjelman. Oikea taustapalvelu (esim. Formspree) olisi seuraava askel.
+-Lomake lähetetään Netlify Formsilla, joka välittää viestit sähköpostiin. Toimii vain Netlifyssä julkaistuna (ei GitHub Pagesissa).
 
 
 

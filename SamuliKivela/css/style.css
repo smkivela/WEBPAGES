@@ -543,6 +543,20 @@ img.kortti-kuva {
     display: none;
 }
 
+#contact button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Roskapostiansa piiloon kaikilta ihmisiltä */
+.ansa {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
 
 /* FOOTER */
 
